@@ -11,9 +11,15 @@ from livarava.job import Job
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 fa = FontAwesome(app)
+
 assets = Environment(app)
 
-scss = Bundle('scss/blog.scss', 'scss/froala.scss', filters='pyscss', output='css/app.css')
+scss = Bundle('scss/app.scss',
+              'scss/froala.scss',
+              'scss/job.scss',
+              filters='pyscss',
+              output='css/app.css')
+
 assets.register('scss_all', scss)
 
 graph = Graph('bolt://localhost:7688/')
@@ -27,20 +33,16 @@ def index():
     # modall = filters + modifiers
     # r1 = s.get('posts', modall)
     # items = r1.resources
-
-    print('Hi')
-    print(graph)
-    items = Job.match(graph).order_by("_.created DESC").limit(2)
-
+    items = Job.match(graph).order_by("_.created DESC").limit(4)
     return render_template('index.html', items=items)
 
 
-@app.route('/p/<int:post_id>')
-def post(post_id):
+@app.route('/j/<int:job_id>')
+def job(job_id):
     s = Session('https://www.livarava.com/api/v2/')
 
     # Fetch Post Item
-    r1 = s.get('posts', post_id)
+    r1 = s.get('posts', job_id)
     item = r1.resource
     print(item)
 

@@ -1,51 +1,59 @@
-html body .header-holder {
-  background-color: #fff; }
-  html body .header-holder .header-container a {
+.header-holder {
+  background-color: #333;
+  color: #fff;
+  height: 44px;
+  padding-top: 4px; }
+  .header-holder .header-container a {
     text-decoration: none; }
-    html body .header-holder .header-container .logo {
-      height: 40px;
-      vertical-align: text-bottom; }
-      html body .header-holder .header-container .text {
+    .header-holder .header-container .logo {
+      height: 30px;
+      vertical-align: text-bottom;
+      margin-right: 5px; }
+      .header-holder .header-container .text {
         display: inline;
         font-size: 20px;
         font-weight: 500;
         line-height: 40px; }
-html body .content {
-  background-color: #efefef; }
-  html body .post {
-    background-color: #fff; }
-    html body .post .image {
+
+.content {
+  background-color: #fff; }
+
+  .post {
+    background-color: #eee; }
+    .post .image {
       width: 100%;
       min-height: 400px;
       background-color: #5cb85c;
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat; }
-      html body .post a {
+      .post a {
         color: black; }
-        html body .post a:hover {
+        .post a:hover {
           text-decoration: none; }
-          html body .post h1 {
+          .post h1 {
             color: black;
             font-size: 26px; }
-html body .article {
+
+.article {
   background-color: #fff;
   text-align: left; }
-  html body .article .social img {
+  .article .social img {
     width: 24px;
     height: 24px; }
-  html body .article a {
+  .article a {
     color: black; }
-    html body .article a:hover {
+    .article a:hover {
       text-decoration: none; }
-      html body .article h1 {
+      .article h1 {
         color: black;
         font-size: 36px;
         font-weight: 500; }
-html body .footer-holder {
-  background-color: #fff;
+
+.footer-holder {
+  background-color: #ddd;
   height: 40px; }
-  html body .footer-holder .footer-container {
+  .footer-holder .footer-container {
     line-height: 40px; }
 
 .clearfix::after {
@@ -471,3 +479,8 @@ html body .footer-holder {
                                                                                                                                                                             float: right;
                                                                                                                                                                             margin: 5px 0 5px 5px;
                                                                                                                                                                             max-width: calc(100% - 5px); }
+
+.job {
+  background-color: #eee; }
+  .job .header {
+    font-size: 20px; }

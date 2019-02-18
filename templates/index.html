@@ -5,19 +5,32 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12 col-sm-11 col-md-10 col-lg-8">
-                <h4 class="mb-4">Featured</h4>
+            <div class="col-12 col-sm-11 col-md-10 col-lg-8 offset-lg-2 text-center">
+
+                <h3 class="mb-2">Jobs at LivaRava</h3>
+
+                <hr class="mb-4 mt-0">
 
                 {% for item in items %}
-                    <div class="post mb-5">
-                        <div class="image mb-3" style="background: url('{{ item.image_url }}')"></div>
+                    <div class="job mb-4 text-left">
                         <div class="p-3">
-                            <div class="text-muted">
-                                {{ item.created|isodatetime }}
+                            <div class="row">
+                                <div class="col-12">
+                                    <a class="pull-right" data-toggle="collapse" href="#jobSummary{{ item._id }}"
+                                       role="button" aria-expanded="false" aria-controls="jobSummary{{ item._id }}">
+                                        +
+                                    </a>
+                                    <a class="header" href="{{ url_for('job', job_id=item._id) }}">
+                                        {{ item.title|safe }}
+                                    </a>
+                                    <div class="text-muted">{{ item.created|isodatetime }}</div>
+                                </div>
                             </div>
-{#                            <a href="{{ url_for('post', post_id=post.id) }}">#}
-                                <h1>{{ item.title|safe }}</h1>
-{#                            </a>#}
+                            <div class="row collapse" id="jobSummary{{ item._id }}">
+                                <div class="col-12">
+                                    {{ item.summary|safe }}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}

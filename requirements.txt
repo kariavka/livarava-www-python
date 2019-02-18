@@ -3,7 +3,7 @@ flask
 flask-assets
 flask-fontawesome
 jsonapi-client
-livereload
+livereload==2.5.1
 neomodel
 py2neo
 pyscss
