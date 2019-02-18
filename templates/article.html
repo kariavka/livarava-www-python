@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ meta.title }} - The Official LivaRava Blog{% endblock %}
+
+{% block meta %}
+    <meta name="description" content="{{ meta.description }}"/>
+    <meta name="keywords" content="{{ meta.keywords }}"/>
+    <meta name="robots" content="index,follow"/>
+
+    <!--Facebook Begin-->
+    <meta property="fb:app_id" content="{{ meta.fb_app_id }}">
+    <meta property="fb:pages" content="{{ meta.fb_pages }}">
+    <meta property="og:type" content="{{ meta.og_type }}"/>
+    <meta property="og:site_name" content="{{ meta.og_site_name }}"/>
+    <meta property="og:url" content="{{ meta.og_url }}"/>
+    <meta property="og:locale" content="{{ meta.og_locale }}"/>
+    <meta property="og:title" content="{{ meta.og_title }}"/>
+    <meta property="og:description" content="{{ meta.og_description }}"/>
+    <meta property="og:image" content="{{ meta.og_image }}"/>
+    <!--Facebook End-->
+
+    <!--Twitter Begin-->
+    <meta name="twitter:url" content="{{ meta.twitter_url }}"/>
+    <meta name="twitter:site" content="{{ meta.twitter_site }}"/>
+    <!--Twitter End-->
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-9">
+                <div class="article p-4">
+                    <h1>{{ post.title }}</h1>
+                    <div class="text-muted">
+                        {{ post.created|isodatetime }} &middot; {{ post.author.fullname }}
+                    </div>
+                    <div class="mt-2">
+                        <a class="social" href="{{ share.facebook }}" target="_blank">
+                            <img src="/static/img/facebook.png"/>
+                        </a>
+                        <a class="social" href="{{ share.twitter }}" target="_blank">
+                            <img src="/static/img/twitter.png"/>
+                        </a>
+                        <a class="social" href="{{ share.linkedin }}" target="_blank">
+                            <img src="/static/img/linkedin.png"/>
+                        </a>
+                        <a class="social" href="{{ share.pinterest }}" target="_blank">
+                            <img src="/static/img/pinterest.png"/>
+                        </a>
+                    </div>
+                    <p>{{ post.description|safe }}</p>
+                </div>
+            </div>
+            <div class="col-3">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

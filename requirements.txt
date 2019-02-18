@@ -1,0 +1,10 @@
+bootstrap-flask
+flask
+flask-assets
+flask-fontawesome
+jsonapi-client
+livereload
+neomodel
+py2neo
+pyscss
+python-dateutil
