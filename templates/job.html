@@ -30,9 +30,12 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-9">
                 <div class="article p-4">
-                    <h1>{{ post.title }}</h1>
+                    <h1>{{ item.title|safe }}</h1>
                     <div class="text-muted">
-                        {{ post.created|isodatetime }} &middot; {{ post.author.fullname }}
+                        {{ item.created|isodatetime }}
+                        {% if item.author %}
+                            &middot; {{ item.author.fullname }}
+                        {% endif %}
                     </div>
                     <div class="mt-2">
                         <a class="social" href="{{ share.facebook }}" target="_blank">
@@ -48,7 +51,7 @@
                             <img src="/static/img/pinterest.png"/>
                         </a>
                     </div>
-                    <p>{{ post.description|safe }}</p>
+                    <p>{{ item.description|safe }}</p>
                 </div>
             </div>
             <div class="col-3">

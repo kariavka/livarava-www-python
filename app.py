@@ -27,33 +27,24 @@ graph = Graph('bolt://localhost:7688/')
 
 @app.route('/')
 def index():
-    # s = Session('https://www.livarava.com/api/v2/')
-    # filters = Filter(language='en', featured=True)
-    # modifiers = Modifier('lira=0,4964,97646&per_page=10')
-    # modall = filters + modifiers
-    # r1 = s.get('posts', modall)
-    # items = r1.resources
     items = Job.match(graph).order_by("_.created DESC").limit(4)
     return render_template('index.html', items=items)
 
 
-@app.route('/j/<int:job_id>')
+@app.route('/details/<int:job_id>')
 def job(job_id):
-    s = Session('https://www.livarava.com/api/v2/')
-
     # Fetch Post Item
-    r1 = s.get('posts', job_id)
-    item = r1.resource
-    print(item)
+    item = Job.match(graph).where("ID(_)={0}".format(job_id)).first()
+    # print(item)
 
     # Main
     url = request.url
     title = item.header or item.meta_title or item.title or ''
 
     # Meta
-    meta_title = item['meta_title'] or item.title or ''
-    meta_description = item['meta_description'] or item.summary or ''
-    meta_keywords = item['meta_keywords'] or ''
+    meta_title = item.meta_title or item.title or ''
+    meta_description = item.meta_description or item.summary or ''
+    meta_keywords = item.meta_keywords or ''
 
     # Facebook
     meta_fb_app_id = 259898127536918
@@ -62,9 +53,9 @@ def job(job_id):
     meta_og_site_name = 'LivaRava'
     meta_og_url = url
     meta_og_locale = item.language or 'en'
-    meta_og_title = item['meta_title'] or item.title
-    meta_og_description = item['meta_description'] or item.summary
-    meta_og_image = item['meta_image_url'] or item['image_url']
+    meta_og_title = item.meta_title or item.title
+    meta_og_description = item.meta_description or item.summary
+    meta_og_image = item.meta_image_url or item.image_url
 
     # Twitter
     meta_twitter_url = url
@@ -100,8 +91,8 @@ def job(job_id):
                   ''.format(url, title),
     )
 
-    return render_template('article.html',
-                           post=item,
+    return render_template('job.html',
+                           item=item,
                            meta=meta,
                            share=share)
 

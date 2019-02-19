@@ -1,7 +1,15 @@
 .job {
-  background-color: #eee;
+  background-color: #fff;
 
   .header {
     font-size: 20px;
+  }
+
+  a.more {
+    color: #000;
+  }
+
+  a.more:hover {
+    text-decoration: none;
   }
 }

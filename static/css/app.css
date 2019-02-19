@@ -481,6 +481,10 @@
                                                                                                                                                                             max-width: calc(100% - 5px); }
 
 .job {
-  background-color: #eee; }
+  background-color: #fff; }
   .job .header {
     font-size: 20px; }
+    .job a.more {
+      color: #000; }
+      .job a.more:hover {
+        text-decoration: none; }

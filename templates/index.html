@@ -12,27 +12,33 @@
                 <hr class="mb-4 mt-0">
 
                 {% for item in items %}
-                    <div class="job mb-4 text-left">
+                    <div class="job text-left">
                         <div class="p-3">
                             <div class="row">
                                 <div class="col-12">
-                                    <a class="pull-right" data-toggle="collapse" href="#jobSummary{{ item._id }}"
-                                       role="button" aria-expanded="false" aria-controls="jobSummary{{ item._id }}">
-                                        +
-                                    </a>
+                                    {% if item.summary %}
+                                        <a class="more pull-right" data-toggle="collapse"
+                                           href="#jobSummary{{ item._id }}"
+                                           role="button" aria-expanded="false" aria-controls="jobSummary{{ item._id }}">
+                                            +
+                                        </a>
+                                    {% endif %}
                                     <a class="header" href="{{ url_for('job', job_id=item._id) }}">
                                         {{ item.title|safe }}
                                     </a>
                                     <div class="text-muted">{{ item.created|isodatetime }}</div>
                                 </div>
                             </div>
-                            <div class="row collapse" id="jobSummary{{ item._id }}">
-                                <div class="col-12">
-                                    {{ item.summary|safe }}
+                            {% if item.summary %}
+                                <div class="row mt-3 collapse" id="jobSummary{{ item._id }}">
+                                    <div class="col-12">
+                                        {{ item.summary|safe }}
+                                    </div>
                                 </div>
-                            </div>
+                            {% endif %}
                         </div>
                     </div>
+                    <hr class="mb-4">
                 {% endfor %}
             </div>
             <div class="col-4">

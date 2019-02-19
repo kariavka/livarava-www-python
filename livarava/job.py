@@ -8,7 +8,7 @@
     :copyright: (c) 2019 by Artem Kariavka, LivaRava.
     :license: LivaRava License
 """
-from py2neo.ogm import GraphObject, Property
+from py2neo.ogm import GraphObject, Property, RelatedFrom, RelatedTo
 
 __title__ = 'LivaRava Job'
 __author__ = 'kariavka'
@@ -28,16 +28,20 @@ class Job(GraphObject):
 
     # Properties
     title = Property()
-    main_image_url = Property()
+    header = Property()
+    image_url = Property()
     description = Property()
     summary = Property()
     language = Property()
+
+    # Meta
     meta_title = Property()
     meta_description = Property()
     meta_keywords = Property()
+    meta_image_url = Property()
 
     # Relationships
-    # author = RelatedFrom('User', 'JOB_AUTHOR')
+    author = RelatedTo('User', 'JOB_AUTHOR')
 
     @property
     def _id(self):
