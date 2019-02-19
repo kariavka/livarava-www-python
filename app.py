@@ -6,6 +6,7 @@ from flask_fontawesome import FontAwesome
 from py2neo import Graph
 
 from livarava.job import Job
+from settings import NEO4J_BOLT
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -21,7 +22,7 @@ scss = Bundle('scss/app.scss',
 
 assets.register('scss_all', scss)
 
-graph = Graph('bolt://localhost:7688/')
+graph = Graph(NEO4J_BOLT)
 
 
 @app.route('/')
