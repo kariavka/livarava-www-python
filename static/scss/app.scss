@@ -83,10 +83,15 @@
 }
 
 .footer-holder {
-  background-color: #ddd;
+  background-color: #eee;
   height: 40px;
 
   .footer-container {
     line-height: 40px;
+
+    .copyright {
+      font-size: 11px;
+      color: #555;
+    }
   }
 }
