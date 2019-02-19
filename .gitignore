@@ -2,7 +2,7 @@
 /.idea/
 /.env/
 /logs/
-/static/.webassets-cache
+/settings.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

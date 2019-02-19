@@ -3,7 +3,6 @@ from flask import Flask, render_template, request
 from flask_assets import Environment, Bundle
 from flask_bootstrap import Bootstrap
 from flask_fontawesome import FontAwesome
-from jsonapi_client import Session, Filter, Modifier
 from py2neo import Graph
 
 from livarava.job import Job
@@ -33,7 +32,7 @@ def index():
 
 @app.route('/details/<int:job_id>')
 def job(job_id):
-    # Fetch Post Item
+    # Fetch Job Item
     item = Job.match(graph).where("ID(_)={0}".format(job_id)).first()
     # print(item)
 

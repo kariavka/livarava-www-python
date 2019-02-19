@@ -1,19 +1,23 @@
-.header-holder {
-  background-color: #333;
-  color: #fff;
-  height: 44px;
-  padding-top: 4px; }
-  .header-holder .header-container a {
-    text-decoration: none; }
-    .header-holder .header-container .logo {
-      height: 30px;
-      vertical-align: text-bottom;
-      margin-right: 5px; }
-      .header-holder .header-container .text {
-        display: inline;
-        font-size: 20px;
-        font-weight: 500;
-        line-height: 40px; }
+body {
+  background-color: #eee; }
+
+  .header-holder {
+    background-color: #333;
+    color: #fff;
+    height: 44px;
+    padding-top: 4px; }
+    .header-holder .header-container a {
+      text-decoration: none; }
+      .header-holder .header-container .logo {
+        height: 30px;
+        vertical-align: text-bottom;
+        margin-right: 5px; }
+        .header-holder .header-container .text {
+          display: inline;
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 40px;
+          color: #fff; }
 
 .content {
   background-color: #fff; }
