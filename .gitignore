@@ -3,6 +3,7 @@
 /.env/
 /logs/
 /settings.py
+/Makefile
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

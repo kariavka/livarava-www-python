@@ -1,6 +1,7 @@
+import time
+
 from dateutil.parser import parse
 from flask import Flask, render_template, request
-from flask_assets import Environment, Bundle
 from flask_bootstrap import Bootstrap
 from flask_fontawesome import FontAwesome
 from py2neo import Graph
@@ -9,19 +10,9 @@ from livarava.job import Job
 from settings import NEO4J_BOLT
 
 app = Flask(__name__)
+app.jinja_env.auto_reload = True
 bootstrap = Bootstrap(app)
 fa = FontAwesome(app)
-
-assets = Environment(app)
-
-scss = Bundle('scss/app.scss',
-              'scss/froala.scss',
-              'scss/job.scss',
-              filters='pyscss',
-              output='css/app.css')
-
-assets.register('scss_all', scss)
-
 graph = Graph(NEO4J_BOLT)
 
 
@@ -95,6 +86,11 @@ def job(job_id):
                            item=item,
                            meta=meta,
                            share=share)
+
+
+@app.template_filter('time')
+def time_filter(s):
+    return int(round(time.time() * 1000))
 
 
 @app.template_filter('isodatetime')

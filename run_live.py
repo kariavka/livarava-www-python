@@ -1,9 +1,9 @@
-from livereload import Server
+from livereload import Server, shell
 from app import app
+from settings import PORT
 
 app.debug = True
 
 server = Server(app.wsgi_app)
-server.watch('/static/css/app.css')
-server.watch('/templates/index.html')
-server.serve()
+server.watch('assets/scss/*.scss', shell('make styles'))
+server.serve(port=PORT, debug=True)
