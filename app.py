@@ -18,8 +18,7 @@ graph = Graph(NEO4J_BOLT)
 
 @app.route('/')
 def index():
-    items = Job.match(graph).order_by("_.created DESC").limit(4)
-    return render_template('index.html', items=items)
+    return render_template('index.html')
 
 
 @app.route('/details/<int:job_id>')
@@ -72,20 +71,13 @@ def job(job_id):
 
     # Share Data
     share = dict(
-        facebook='https://www.facebook.com/sharer/sharer.php?u={0}'
-                 ''.format(url),
-        twitter='https://twitter.com/home?status={0} {1}'
-                ''.format(title, url),
-        linkedin='https://www.linkedin.com/shareArticle?mini=true&url={0}&title={1}'
-                 ''.format(url, title),
-        pinterest='https://pinterest.com/pin/create/button/?url={0}&description={1}'
-                  ''.format(url, title),
+        facebook='https://www.facebook.com/sharer/sharer.php?u={0}'.format(url),
+        twitter='https://twitter.com/home?status={0} {1}'.format(title, url),
+        linkedin='https://www.linkedin.com/shareArticle?mini=true&url={0}&title={1}'.format(url, title),
+        pinterest='https://pinterest.com/pin/create/button/?url={0}&description={1}'.format(url, title),
     )
 
-    return render_template('job.html',
-                           item=item,
-                           meta=meta,
-                           share=share)
+    return render_template('index.html', item=item, meta=meta, share=share)
 
 
 @app.template_filter('time')
