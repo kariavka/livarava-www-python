@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}LivaRava Jobs{% endblock %}
+{% block title %}LivaRava{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -11,38 +11,6 @@
                 <h1 class="display-4 mt-4 mb-2">LivaRava</h1>
 
                 <p class="lead text-muted">a new era of knowledge management</p>
-
-                <hr class="mb-4 mt-0">
-
-                {% for item in items %}
-                    <div class="job text-left">
-                        <div class="p-3">
-                            <div class="row">
-                                <div class="col-12">
-                                    {% if item.summary %}
-                                        <a class="more pull-right" data-toggle="collapse"
-                                           href="#jobSummary{{ item._id }}"
-                                           role="button" aria-expanded="false" aria-controls="jobSummary{{ item._id }}">
-                                            +
-                                        </a>
-                                    {% endif %}
-                                    <a class="header" href="{{ url_for('job', job_id=item._id) }}">
-                                        {{ item.title|safe }}
-                                    </a>
-                                    <div class="text-muted">{{ item.created|isodatetime }}</div>
-                                </div>
-                            </div>
-                            {% if item.summary %}
-                                <div class="row mt-3 collapse" id="jobSummary{{ item._id }}">
-                                    <div class="col-12">
-                                        {{ item.summary|safe }}
-                                    </div>
-                                </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                    <hr class="mb-4">
-                {% endfor %}
             </div>
             <div class="col-4">
 
